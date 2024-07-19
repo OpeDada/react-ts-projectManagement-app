@@ -13,13 +13,13 @@ const { project } = props;
 
   return (
     <form className="input-group vertical">
-      <label htmlFor="name">{project.name}</label>
+      <label htmlFor="name">Project Name</label>
       <input type="text" name="name" placeholder="enter name" />
 
-      <label htmlFor="description">{formatDescription(project.description)}</label>
+      <label htmlFor="description">Project Description</label>
       <textarea name="description" id="" placeholder="enter description"></textarea>
 
-      <label htmlFor="budget">Budget: {project.budget.toLocaleString()}</label>
+      <label htmlFor="budget">Project Budget</label>
       <input type="number" name="budget" placeholder="enter budget" />
 
       <label htmlFor="isActive">Active?</label>
