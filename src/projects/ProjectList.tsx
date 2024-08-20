@@ -14,16 +14,20 @@ export default function ProjectList({ projects }: ProjectListProps){
     setprojectBeingEdited(project)
   };
 
+  const cancelEditing = () => {
+    setprojectBeingEdited({})
+  }
+
   return (
     <div className="row">
-        {projects.map((project) =>(
+        {projects.map((project) => (
           <div key={project.id} className="cols-sm">
             {project === projectBeingEdited ? (
-              <ProjectForm />
+              <ProjectForm onCancel={cancelEditing}/>
             ) : (
               <ProjectCard project={project} onEdit={handleEdit} />
             )}
-            </div>
+          </div>
         ))}
     </div>
   )

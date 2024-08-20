@@ -1,15 +1,19 @@
 import { Project } from "./Project"
 
-function formatDescription(description: string): string{
-  return description.substring(0, 60) + '...'
+// function formatDescription(description: string): string{
+//   return description.substring(0, 60) + '...'
+// }
+
+// interface ProjectCardProps{
+//   project: Project
+// }
+
+interface ProjectFormProps {
+  onCancel: () => void;
 }
 
-interface ProjectCardProps{
-  project: Project
-}
-
-export default function ProjectForm(props: ProjectCardProps){
-const { project } = props;
+export default function ProjectForm({ onCancel }: ProjectFormProps){
+// const { project } = props;
 
   return (
     <form className="input-group vertical">
@@ -28,7 +32,7 @@ const { project } = props;
       <div className="input-group">
         <button className="primary bordered medium">Save</button>
         <span></span>
-        <button type="button" className="bordered medium">Cancel</button>
+        <button type="button" className="bordered medium" onClick={onCancel}>Cancel</button>
       </div>
     </form>
   )
