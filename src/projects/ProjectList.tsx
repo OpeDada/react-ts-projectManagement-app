@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import { Project } from './Project'
 import ProjectCard from './ProjectCard'
 import ProjectForm from './ProjectForm'
@@ -7,12 +8,23 @@ interface ProjectListProps {
 }
 
 export default function ProjectList({ projects }: ProjectListProps){
-  const items = projects.map((project) => (
-        <div key={project.id} className="cols-sm">
-          <ProjectCard project={project}></ProjectCard>
-          <ProjectForm project={project}/>
-        </div>
-  ));
-  return <div className='row'>{items}</div>
+  const [projectBeingEdited, setprojectBeingEdited] = useState({})
 
+  const handleEdit = (project: Project) => {
+    setprojectBeingEdited(project)
+  };
+
+  return (
+    <div className="row">
+        {projects.map((project) =>(
+          <div key={project.id} className="cols-sm">
+            {project === projectBeingEdited ? (
+              <ProjectForm />
+            ) : (
+              <ProjectCard project={project} onEdit={handleEdit} />
+            )}
+            </div>
+        ))}
+    </div>
+  )
 }

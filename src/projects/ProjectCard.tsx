@@ -6,12 +6,13 @@ import { Project } from './Project'
 
   interface ProjectCardProps {
   project: Project;
+  onEdit: (project: Project) => void
 }
 
 export default function ProjectCard(props: ProjectCardProps){
-  const { project } = props;
+  const { project, onEdit } = props;
   const handleEditClick = (projectBeingEdited: Project) => {
-    console.log(projectBeingEdited)
+    onEdit(projectBeingEdited)
   }
   return (
       <div className='card'>
