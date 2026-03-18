@@ -39,10 +39,19 @@ export default function ProjectPage() {
   }, [currentPage]);
 
   const saveProject = (project: Project) => {
-    let updatedProjects = projects.map((p: Project) => {
-      return p.id === project.id ? project : p;
-    });
-    setProjects(updatedProjects);
+    projectAPI
+      .put(project)
+      .then((updatedProject) => {
+        let updatedProjects = projects.map((p: Project) => {
+          return p.id === project.id ? project : p;
+        });
+        setProjects(updatedProjects);
+      })
+      .catch((e) => {
+        if (e instanceof Error) {
+          setError(e.message);
+        }
+      });
   };
 
   return (
