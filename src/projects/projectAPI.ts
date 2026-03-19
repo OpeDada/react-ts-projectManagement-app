@@ -1,3 +1,4 @@
+// import { parse } from "path";
 import { Project } from "./Project";
 const baseUrl = "http://localhost:4000";
 const url = `${baseUrl}/projects`;
@@ -51,6 +52,12 @@ function convertToProjectModel(item: any): Project {
 }
 
 const projectAPI = {
+  find(id: number) {
+    return fetch(`${url}/${id}`)
+      .then(checkStatus)
+      .then(parseJSON)
+      .then(convertToProjectModel);
+  },
   put(project: Project) {
     return fetch(`${url}/${project.id}`, {
       method: "PUT",
