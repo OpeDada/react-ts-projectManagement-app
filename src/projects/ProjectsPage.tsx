@@ -4,7 +4,7 @@ import ProjectList from "./ProjectList";
 import { Project } from "./Project";
 import { projectAPI } from "./projectAPI";
 
-export default function ProjectPage() {
+export default function ProjectsPage() {
   // const [projects, setProjects] = useState<Project[]>(MOCK_PROJECTS);
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(false);
